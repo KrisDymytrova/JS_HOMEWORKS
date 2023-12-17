@@ -1,18 +1,18 @@
 'use strict';
 
-let a = prompt('Введите первое число');
-let b = prompt('Введите второе число');
+let firstNumber = prompt('Введите первое число');
+let secondNumber = prompt('Введите второе число');
 
 
-const sum = parseInt(a) + parseInt(b);
-console.log('Результат: ' + a + '+' + b + ' = ' + sum);
+const sum = parseInt(firstNumber) + parseInt(secondNumber);
+console.log('Результат: ' + firstNumber + '+' + secondNumber + ' = ' + sum);
 
-const subtraction = parseInt(a) - parseInt(b);
-console.log('Результат: ' + a + '-' + b + ' = ' + subtraction);
+const subtraction = parseInt(firstNumber) - parseInt(secondNumber);
+console.log('Результат: ' + firstNumber + '-' + secondNumber + ' = ' + subtraction);
 
-const multiplication = parseInt(a) * parseInt(b);
-console.log('Результат: ' + a + '*' + b + ' = ' + multiplication);
+const multiplication = parseInt(firstNumber) * parseInt(secondNumber);
+console.log('Результат: ' + firstNumber + '*' + secondNumber + ' = ' + multiplication);
 
-const division = parseInt(a) / parseInt(b);
-console.log('Результат: ' + a + '/' + b + ' = ' + division);
+const division = parseInt(firstNumber) / parseInt(secondNumber);
+console.log('Результат: ' + firstNumber + '/' + secondNumber + ' = ' + division);
 
