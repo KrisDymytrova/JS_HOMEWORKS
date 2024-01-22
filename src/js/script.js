@@ -1,17 +1,16 @@
 'use strict';
 
-const uniqueNumbers = new Set();
+const usedNumbersArr = [];
 
-const getRandomNum = function () {
-    return Math.floor(Math.random() * 100) + 1;
+const getRandomNum = function (min, max) {
+    const randomNumResult = Math.floor(Math.random() * (max - min + 1)) + min;
+    if (!usedNumbersArr.includes(randomNumResult)) {
+        usedNumbersArr.push(randomNumResult);
+        return randomNumResult;
+    }
+    return getRandomNum(min, max)
 }
 
-const getUniqueNum = function () {
-    let randomNum;
-    do {
-        randomNum = getRandomNum();
-    } while (uniqueNumbers.has(randomNum));
-
-    uniqueNumbers.add(randomNum);
-    return randomNum;
+for (let i = 0; i < 100; i += 1) {
+    console.log(getRandomNum(1, 100))
 }
