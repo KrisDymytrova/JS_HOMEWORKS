@@ -1,7 +1,7 @@
 'use strict';
 
-let firstNumber = prompt('Введите первое число');
-let secondNumber = prompt('Введите второе число');
+const firstNumber = prompt('Введите первое число');
+const secondNumber = prompt('Введите второе число');
 
 
 const sum = parseInt(firstNumber) + parseInt(secondNumber);
