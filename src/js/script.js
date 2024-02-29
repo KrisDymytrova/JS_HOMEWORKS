@@ -12,11 +12,11 @@ alert(admin);
 
 //Task #2
 
-let myPlanetName = 'Земля';
-let visitorName = 'Кристина';
+const myPlanetName = 'Земля';
+const visitorName = 'Кристина';
 
 //Task #3
 
-let sum = '10' + 10;
+const sum = '10' + 10;
 console.log(typeof sum);
 console.log(sum);
