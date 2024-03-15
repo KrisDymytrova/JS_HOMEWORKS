@@ -6,6 +6,27 @@
     <link rel="stylesheet" href="./styles/style.css">
 </head>
 <body>
+<h1>Створення форми для опитування</h1>
+<form data-form>
+    <div>
+        <label for="surveyFormName">Назва опитування:</label>
+        <input type="text" id="surveyFormName" name="surveyFormName">
+    </div>
+    <br>
+    <div id="surveyOptions">
+        <label for="option">Варіант відповіді:</label>
+        <input type="text" id="option" name="option">
+    </div>
+    <br>
+    <button type="button" id="addNewOptionBtn">Додати варіант відповіді</button>
+    <br><br>
+    <button type="submit">Створити опитування</button>
+</form>
+<br>
+
+<div id="message"></div>
+
+<div id="surveyResults"></div>
 
 <script src="./js/script.js"></script>
 </body>
