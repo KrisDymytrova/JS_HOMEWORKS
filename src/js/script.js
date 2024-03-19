@@ -8,10 +8,6 @@
   const renderData = () => {
     const data = JSON.parse(localStorage.getItem(dataKey))
 
-    if (document.querySelector('.dataUL')) {
-      document.querySelector('.dataUL').remove()
-    }
-
     if (!data || Object.keys(data).length === 0 || Object.keys(data).filter(key => key !== 'option' && key !== 'terms').every(key => data[key] === '')) {
       dataContainer.innerHTML = ''
       const noDataMessage = document.createElement('p')
@@ -20,7 +16,6 @@
       dataContainer.appendChild(noDataMessage)
     } else {
       const ul = document.createElement('ul')
-      ul.classList.add('dataUL')
 
       for (const key in data) {
         const li = document.createElement('li')
