@@ -1,19 +1,32 @@
-'use strict';
+'use strict'
+const DATA_KEY = 'formData';
 
 (function () {
-  const form = document.querySelector('#form')
-  const dataContainer = document.querySelector('.data-container')
-  const dataKey = 'formData'
+  const formPage = () => {
+    const form = document.querySelector('#form')
 
-  const renderData = () => {
-    const data = JSON.parse(localStorage.getItem(dataKey))
+    form.addEventListener('submit', (e) => {
+      e.preventDefault()
 
-    if (!data || Object.keys(data).length === 0 || Object.keys(data).filter(key => key !== 'option' && key !== 'terms').every(key => data[key] === '')) {
-      dataContainer.innerHTML = ''
-      const noDataMessage = document.createElement('p')
-      noDataMessage.textContent = 'No stored data found.'
-      noDataMessage.classList.add('noDataMessage')
-      dataContainer.appendChild(noDataMessage)
+      const elements = e.target.querySelectorAll('input, textarea, select')
+      const data = {}
+
+      elements.forEach((input) => {
+        if (input.value.trim() !== '') {
+          data[input.name] = input.value
+        }
+      })
+
+      localStorage.setItem(DATA_KEY, JSON.stringify(data))
+      e.target.reset()
+    })
+  }
+  const secondPage = () => {
+    const data = JSON.parse(localStorage.getItem(DATA_KEY))
+    const dataContainer = document.querySelector('.data-container')
+
+    if (!data || Object.keys(data).filter(key => !['option', 'terms'].includes(key)).every(key => !data[key])) {
+      dataContainer.innerHTML = '<p class="noDataMessage">No stored data found.</p>'
     } else {
       const ul = document.createElement('ul')
 
@@ -27,21 +40,9 @@
     }
   }
 
-  if (form) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault()
-
-      const elements = e.target.querySelectorAll('input, textarea, select')
-
-      const data = Array.from(elements).reduce((acc, item) => {
-        acc[item.name] = item.value.trim()
-        return acc
-      }, {})
-
-      localStorage.setItem(dataKey, JSON.stringify(data))
-      renderData()
-    })
+  if (location.pathname.includes('index.html')) {
+    formPage()
+  } else if (location.pathname.includes('index1.html')) {
+    secondPage()
   }
-
-  document.addEventListener('DOMContentLoaded', renderData)
-}())
+})()
