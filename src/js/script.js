@@ -27,14 +27,15 @@ const DATA_KEY = 'formData';
 
     if (!data || Object.keys(data).filter(key => !['option', 'terms'].includes(key)).every(key => !data[key])) {
       dataContainer.innerHTML = '<p class="noDataMessage">No stored data found.</p>'
-    } else {
-      const ul = document.createElement('ul')
+      return
+    }
 
-      for (const key in data) {
-        const li = document.createElement('li')
-        li.innerHTML = `<b>${key}:</b> <i>${data[key]}</i>`
-        ul.append(li)
-      }
+    const ul = document.createElement('ul')
+
+    for (const key in data) {
+      const li = document.createElement('li')
+      li.innerHTML = `<b>${key}:</b> <i>${data[key]}</i>`
+      ul.append(li)
 
       dataContainer.append(ul)
     }
@@ -42,7 +43,9 @@ const DATA_KEY = 'formData';
 
   if (location.pathname.includes('index.html')) {
     formPage()
-  } else if (location.pathname.includes('index1.html')) {
+  }
+
+  if (location.pathname.includes('index1.html')) {
     secondPage()
   }
 })()
